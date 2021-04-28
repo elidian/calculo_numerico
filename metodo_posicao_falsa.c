@@ -16,12 +16,12 @@ int main(){
     int k = 1;
     a[k] = aa;
     b[k] = bb;
-    x[k] = (a[k] + b[k])/2;
+    x[k] = (a[k]*fabs(b[k]) + b[k]*fabs(a[k]))/(fabs(b[k]) + fabs(a[k]));
     printf("interacao %d\n", k);
     printf("a[%d] = %f\n", k, a[k]);
-    printf("F(a[%d]) = %f\n", k, f(a[k]));
+    printf("x[%d] = %f\n", k, x[k]);
     printf("b[%d] = %f\n", k, b[k]);
-    printf("f(x[%d]) = %f\n\n", k, f(b[k]));
+    printf("f(x[%d]) = %f\n\n", k, f(x[k]));
 
     while (fabs(f(x[k])) > erro && k < tam){
         if (f(a[k])*f(x[k]) < 0) /* raiz em [ak , xk] */
@@ -37,15 +37,13 @@ int main(){
             b[k+1] = b[k];
         }
         k = k + 1;
-        x[k] = (a[k] + b[k])/2;
+        x[k] = (a[k]*fabs(b[k]) + b[k]*fabs(a[k]))/(fabs(b[k]) + fabs(a[k]));
 
         printf("interacao %d\n", k);
         printf("a[%d] = %f\n", k, a[k]);
-        printf("F(a[%d]) = %f\n", k, f(a[k]));
         printf("x[%d] = %f\n", k, x[k]);
-        printf("F(x[%d]) = %f\n", k, f(x[k]));
         printf("b[%d] = %f\n", k, b[k]);
-        printf("F(b[%d]) = %f\n\n", k, f(b[k]));
+        printf("F(x[%d]) = %f\n\n", k, f(x[k]));
 
     };
     if (k > tam)
