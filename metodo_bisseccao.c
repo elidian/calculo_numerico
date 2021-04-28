@@ -17,13 +17,16 @@ int main(){
     a[k] = aa;
     b[k] = bb;
     x[k] = (a[k] + b[k])/2;
+    
     printf("interacao %d\n", k);
     printf("a[%d] = %f\n", k, a[k]);
-    printf("F(a[%d]) = %f\n", k, f(a[k]));
+    printf("f(a[%d]) = %f\n", k, f(a[k]));
+    printf("x[%d] = %f\n", k, x[k]);
+    printf("F(x[%d]) = %f\n", k, f(x[k]));
     printf("b[%d] = %f\n", k, b[k]);
-    printf("f(x[%d]) = %f\n\n", k, f(b[k]));
+    printf("f(b[%d]) = %f\n\n", k, f(b[k]));
 
-    while (fabs(f(x[k])) > erro && k < tam){
+    while (fabs(f(x[k])) >= erro && k < tam){
         if (f(a[k])*f(x[k]) < 0) /* raiz em [ak , xk] */
         {
             //printf("A\n");

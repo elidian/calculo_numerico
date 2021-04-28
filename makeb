@@ -1,0 +1,5 @@
+all: 
+	cls
+	gcc metodo_bisseccao.c -o progb.exe
+	.\progb.exe
+	

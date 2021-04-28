@@ -16,14 +16,16 @@ int main(){
     int k = 1;
     a[k] = aa;
     b[k] = bb;
-    x[k] = (a[k]*fabs(b[k]) + b[k]*fabs(a[k]))/(fabs(b[k]) + fabs(a[k]));
+    x[k] = (a[k]*fabs(f(b[k])) + b[k]*fabs(f(a[k])))/(fabs(f(b[k])) + fabs(f(a[k])));
     printf("interacao %d\n", k);
     printf("a[%d] = %f\n", k, a[k]);
+    printf("f(a[%d]) = %f\n", k, f(a[k]));
     printf("x[%d] = %f\n", k, x[k]);
+    printf("f(x[%d]) = %f\n", k, f(x[k]));
     printf("b[%d] = %f\n", k, b[k]);
-    printf("f(x[%d]) = %f\n\n", k, f(x[k]));
+    printf("f(b[%d]) = %f\n\n", k, f(b[k]));
 
-    while (fabs(f(x[k])) > erro && k < tam){
+    while (fabs(f(x[k])) >= erro && k < tam){
         if (f(a[k])*f(x[k]) < 0) /* raiz em [ak , xk] */
         {
             //printf("A\n");
@@ -37,19 +39,21 @@ int main(){
             b[k+1] = b[k];
         }
         k = k + 1;
-        x[k] = (a[k]*fabs(b[k]) + b[k]*fabs(a[k]))/(fabs(b[k]) + fabs(a[k]));
+        x[k] = (a[k]*fabs(f(b[k])) + b[k]*fabs(f(a[k])))/(fabs(f(b[k])) + fabs(f(a[k])));
 
         printf("interacao %d\n", k);
         printf("a[%d] = %f\n", k, a[k]);
+        printf("F(a[%d]) = %f\n", k, f(a[k]));
         printf("x[%d] = %f\n", k, x[k]);
+        printf("F(x[%d]) = %f\n", k, f(x[k]));
         printf("b[%d] = %f\n", k, b[k]);
-        printf("F(x[%d]) = %f\n\n", k, f(x[k]));
+        printf("F(b[%d]) = %f\n\n", k, f(b[k]));
 
     };
     if (k > tam)
         printf("parada falhou\n");
     else
-        printf("Resultado x[%d]: %f\n", k, x[k]);
+        printf("Resultado x[%d]: %f\n\n", k, x[k]);
     
     return 0;
 }

@@ -1,0 +1,5 @@
+all: 
+	cls
+	gcc metodo_posicao_falsa.c -o progpf.exe
+	.\progpf.exe
+	
